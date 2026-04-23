@@ -1,68 +1,134 @@
-# Shark_Attacks_New
-Checklist restante del proyecto
-1. Limpieza final de datos
-Limpiar valores incorrectos en Fatal Y/N
-Revisar y limpiar Sex
-Revisar valores raros en Age
-Revisar posibles espacios o formatos inconsistentes en Country
+Análisis de actividades asociadas a ataques de tiburón
+Objetivo del proyecto
 
-2. Limpieza y agrupación de actividades
-Normalizar texto de Activity
-Agrupar actividades similares (surf, swimming, fishing, etc.)
-Crear columna nueva activity_clean
+El objetivo de este proyecto es analizar qué actividades acuáticas aparecen con mayor frecuencia asociadas a ataques de tiburón registrados en el dataset del Global Shark Attack File (GSAF).
 
-3. Crear variables útiles
-Extraer mes desde la fecha
-Crear columna Season (estación del año)
+A través de un proceso de limpieza de datos y análisis exploratorio (EDA), buscamos identificar patrones que permitan comprender en qué contextos se registran más incidentes y qué prácticas acuáticas aparecen más frecuentemente en estos ataques.
 
-4. Análisis con groupby()
-Aplicar agregaciones para:
+Este análisis permite transformar un dataset complejo y desestructurado en información interpretable mediante técnicas de data wrangling y agregación de datos.
 
-ataques por actividad
-ataques por actividad y fatalidad
-ataques por actividad y país
-ataques por estación del año
-
-5. Visualizaciones (EDA)
-Crear al menos 3 gráficos claros:
-ataques por actividad
-ataques por estación
-ataques por actividad y fatalidad
-
-6. Interpretación de resultados
-Escribir 3–5 insights basados en los gráficos.
-
-Ejemplo:
-actividades más asociadas a ataques
-temporada con más ataques
-relación entre actividad y fatalidad
-
-7. Conclusión del análisis
-
-Responder la hipótesis inicial.
-
-Ejemplo:
-Las actividades como surfing y swimming aparecen más frecuentemente asociadas a ataques de tiburón.
-
-8. Limpieza final del notebook
-eliminar código innecesario
-agregar títulos y markdown
-ordenar secciones
-
-9. Escribir README para GitHub
-Debe incluir:
-objetivo del proyecto
-dataset utilizado
-proceso de limpieza
-principales insights
-
-10. Preparar slides de presentación
-7–10 slides:
-Título
-Problema del proyecto
 Dataset
-Data cleaning
-Análisis
-Visualizaciones
-Insights
-Conclusión
+
+El análisis utiliza el dataset histórico de ataques de tiburón recopilado por el Global Shark Attack File (GSAF).
+
+Fuente:
+Global Shark Attack File
+
+El dataset contiene registros históricos de ataques de tiburón ocurridos en diferentes países y contextos.
+
+Para este proyecto se utilizaron principalmente las siguientes variables:
+
+Variable    Descripción
+Activity        Actividad realizada por la persona en el momento del ataque
+Country         País donde ocurrió el incidente
+Year            Año del incidente
+Sex             Sexo de la víctima
+Age             Edad de la víctima
+Fatal Y/N       Indica si el ataque fue fatal
+
+Durante el proceso de limpieza, la variable Activity fue transformada para agrupar múltiples variantes textuales en categorías más generales.
+
+La nueva variable creada (activity_group) agrupa actividades similares en categorías como:
+
+Surf
+Natación
+Pesca
+Buceo
+Navegación
+Snorkel
+Otros
+
+Esto permitió reducir la dispersión de valores y facilitar el análisis.
+
+Proceso de análisis
+
+El análisis se desarrolló siguiendo las etapas habituales de un proyecto de análisis de datos.
+
+1. Exploración inicial del dataset
+
+Se analizó la estructura general del dataset para identificar:
+
+número de registros
+tipos de datos
+columnas disponibles
+presencia de valores nulos
+posibles duplicados
+
+2. Limpieza de datos
+
+Se aplicaron varias técnicas de limpieza:
+
+eliminación de registros duplicados
+tratamiento de valores nulos en columnas clave
+normalización de texto
+limpieza de valores inconsistentes en la variable Fatal Y/N
+
+3. Transformación de variables
+
+La variable Activity presentaba numerosas variantes textuales para referirse a actividades similares.
+
+Para mejorar el análisis se creó la variable:
+
+activity_group
+
+Esta variable agrupa actividades similares utilizando patrones de texto (regex), lo que permitió reducir cientos de valores distintos a un pequeño conjunto de categorías comparables.
+
+4. Análisis exploratorio de datos (EDA)
+
+Se aplicaron técnicas de agregación utilizando groupby() para identificar patrones relevantes en el dataset.
+
+Se realizaron dos análisis principales:
+
+Análisis principal
+
+Identificación de las actividades agrupadas con mayor número de ataques registrados.
+
+Análisis complementario
+
+Relación entre tipo de actividad y fatalidad del ataque.
+
+Además, se utilizaron visualizaciones para facilitar la interpretación de los resultados.
+
+Resultados / Insights
+
+El análisis permitió identificar varios patrones relevantes:
+
+Algunas actividades acuáticas aparecen con mayor frecuencia asociadas a ataques de tiburón registrados.
+Categorías como Surf, Natación y Pesca concentran una gran parte de los incidentes documentados.
+La mayoría de los ataques registrados en el dataset no resultan fatales.
+La agrupación de actividades fue un paso clave para transformar una variable con gran dispersión en información útil para el análisis.
+
+Es importante destacar que estos resultados reflejan la frecuencia dentro del dataset, y no necesariamente el riesgo absoluto real de cada actividad.
+
+Próximos pasos
+
+Si se dispusiera de más tiempo o más datos, el análisis podría ampliarse mediante:
+
+análisis geográfico por país o región
+análisis temporal por décadas
+análisis demográfico por edad y sexo
+uso de visualizaciones interactivas
+integración con datos externos sobre actividad turística o marítima
+
+Estas extensiones permitirían comprender mejor el contexto de los ataques registrados.
+
+Replicación del análisis
+
+Este proyecto permite la reproducibilidad del análisis, ya que proporciona el código, el dataset y el flujo completo de procesamiento de datos necesario para obtener los mismos resultados.
+
+Una replicación completa del estudio implicaría aplicar la misma metodología a nuevos datos independientes sobre ataques de tiburón para verificar si los patrones identificados se mantienen.
+
+Pasos para garantizar una replicación exitosa
+Documentar el origen: Registra de dónde provienen los datos y cualquier filtro inicial aplicado.
+Estandarizar los datos: Asegúrate de que las columnas y filas sigan un orden lógico (limpieza y codificación) antes de replicar el análisis.
+Sincronizar el proyecto según las tecnologías utilizadas.
+
+
+Tecnologías utilizadas
+Python
+Pandas
+NumPy
+Matplotlib
+Jupyter Notebook
+
+
